@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P2-M18</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .subtitle {
+            font-size: 0.9em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            const selectedTime = document.getElementById('class-time').value;
+            document.getElementById('selected-time').innerText = `Tiempo efectivo de clase: ${selectedTime} minutos`;
+
+            // Mostrar/ocultar actividades según la duración seleccionada
+            document.querySelectorAll('.activity').forEach(activity => {
+                const activityId = activity.getAttribute('id');
+
+                if (selectedTime === '45') {
+                    // Ocultar Actividad 2 en clases de 45 minutos
+                    if (activityId === 'activity-2') {
+                        activity.style.display = 'none';
+                    } else {
+                        activity.style.display = 'block';
+                    }
+                } else if (selectedTime === '40') {
+                    // Ocultar Actividad 2 y Actividad 4 en clases de 40 minutos
+                    if (activityId === 'activity-2' || activityId === 'activity-4') {
+                        activity.style.display = 'none';
+                    } else {
+                        activity.style.display = 'block';
+                    }
+                } else {
+                    // Clase de 50 minutos, mostrar todo
+                    activity.style.display = 'block';
+                }
+            });
+        }
+
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Playbook-P2-M18</h1>
+    </div>
+
+    <div class="container">
+        <div class="dropdown">
+            <label for="class-time">Tiempo efectivo de Clase:</label>
+            <select id="class-time" onchange="updateActivities()">
+                <option value="50">50 minutos</option>
+                <option value="45">45 minutos</option>
+                <option value="40">40 minutos</option>
+            </select>
+        </div>
+        <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+   <!-- Actividad 0 -->
+<div id="activity-0" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('revision_mision')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🔍 Actividad 0: Revisión de Misión ⏰ Tiempo: No especificado</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Preparación inicial de dispositivos y acceso a Scratch.</span>
+        </div>
+    </div>
+    <div id="revision_mision" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1:</strong> Proyectar la Diapositiva 1. Revisar que las Magic Tablets estén cargadas, conectadas a la red, y que tengan acceso a Scratch para la actividad de programación.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    No aplica (actividad interna).
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('saludo_ritual')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 3 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Bienvenida temática y preparación inicial para la clase.</span>
+        </div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar la Diapositiva 2: Saludar a los estudiantes con entusiasmo y presentar el tema del día.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Hola, Genios! 🌟 ¿Están listos para explorar un mundo lleno de creatividad e imaginación? Hoy aprenderemos sobre proyectos temáticos y cómo narrar historias en Scratch. 🎮✨"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (1 minuto):</strong> Proyectar la Diapositiva 3: Pedir que los estudiantes elijan una postura para expresar su estado de ánimo.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Si están súper emocionados, pónganse de pie y levanten los brazos como si estuvieran gritando ‘¡Aventuuura!’ 🙌 Si necesitan un poco más de energía, crúcense de brazos como si estuvieran pensando ‘Hmmm, ¿qué haremos hoy?’ 🧐"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (0.5 minutos):</strong> Proyectar la Diapositiva 4: Guiar a los estudiantes en el ritual de agradecimiento.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Unamos nuestras manos para dar gracias. 🙏 Digan conmigo: ‘Gracias por estar aquí, Genios. Hoy será un día lleno de aprendizaje y creatividad.’ ¡Vamos a aprender cosas increíbles!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 4 (1 minuto):</strong> Proyectar la Diapositiva 5: Explicar los objetivos del día, detallando lo que aprenderán en clase.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Hoy aprenderemos a usar Scratch para crear historias en escenarios naturales, desarrollar nuestras narrativas y usar la programación para darles vida. 🌿🦜 ¡Serán narradores de aventuras!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('innovacion_dia')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4.5 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Exploración de Google Expeditions y su aplicación en narrativas temáticas.</span>
+        </div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar la Diapositiva 6: Introducir Google Expeditions como herramienta para explorar entornos virtuales.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! 🌍 ¿Sabían que podemos usar la tecnología para viajar a lugares increíbles sin movernos de nuestro lugar? Hoy conoceremos Google Expeditions, una app que nos permite explorar bosques, playas y otros lugares geniales para inspirarnos y crear nuestras historias."
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (2 minutos):</strong> Proyectar la Diapositiva 7: Mostrar un video o realizar una demostración en vivo de Google Expeditions explorando un entorno natural.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Miren cómo funciona Google Expeditions. 🌟 Por ejemplo, podemos explorar un bosque mágico lleno de detalles increíbles que nos ayudarán a imaginar mejores historias. ¡Presten atención a lo que ven y cómo pueden usarlo en sus proyectos!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (2 minutos):</strong> Proyectar la Diapositiva 8: Guiar una reflexión mediante preguntas para conectar lo visto con las narrativas temáticas.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Después de explorar este lugar mágico, ¿qué ideas tienen para sus propias historias? 🌳 ¿Qué elementos de la naturaleza usarían? Por ejemplo, ¿agregarían animales, ríos o sonidos especiales? ¡Cuéntenme cómo usarían esta tecnología en sus proyectos!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('brain_gym')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 10 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Exploración práctica de bloques y narrativas temáticas en Scratch.</span>
+        </div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar la Diapositiva 9: Explicar qué es un <strong>proyecto temático</strong> y su importancia.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Hola, Genios! ¿Listos para una aventura? 🌟 Hoy vamos a hablar sobre algo súper divertido: los <strong>proyectos temáticos</strong>. <br><br>
+                    ¿Qué son? Pues son como inventar tu propio mundo en Scratch, donde decides qué pasa, quiénes son los personajes y dónde ocurre la historia. <br><br>
+                    Es como ser un <strong>director de cine</strong>, pero tú haces todo. Además, escondí un <strong>Easter Egg</strong> en la explicación. ¡Presten atención y podrían ganar Mon-e extra!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (0.5 minutos):</strong> Proyectar la Diapositiva 10: Mostrar cómo estructurar una narrativa temática con <strong>inicio</strong>, <strong>desarrollo</strong> y <strong>desenlace</strong>.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¿Sabían que todas las historias geniales tienen tres partes? 📚 <br><br>
+                    <strong>Inicio:</strong> Presentas el lugar y a los personajes (como un explorador entrando a un bosque). 🌳<br><br>
+                    <strong>Desarrollo:</strong> El explorador enfrenta desafíos, como cruzar un río o seguir a un animal curioso. ✨<br><br>
+                    <strong>Desenlace:</strong> Resuelves la historia, tal vez el explorador encuentra algo especial o aprende una lección. <br><br>
+                    ¡Así organizamos nuestras ideas para que la historia sea clara y emocionante!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (1.5 minutos):</strong> Proyectar la Diapositiva 11 con el bloque y ejemplos narrativos.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¿Sabían que los personajes también pueden <strong>hablar</strong>? 🗣️ <br><br>
+                    El bloque <strong>'Decir [Hola] por [2] segundos'</strong> hace que los personajes digan algo en la pantalla. <br><br>
+                    Por ejemplo, un explorador podría decir: '¡Miren ese árbol gigante!' o '¡Encontré algo interesante!'. <br><br>
+                    Esto ayuda a contar la historia, como si los personajes explicaran lo que ven o lo que sienten. <br><br>
+                    ¡Es como si les dieran pistas a los espectadores sobre qué está pasando!"
+                </td>
+            </tr>
+            <tr id="activity-3-step-4">
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 4 (1.5 minutos):</strong> Proyectar la Diapositiva 12 con el bloque y ejemplos.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Este bloque es uno de mis favoritos! 💭 <br><br>
+                    Con <strong>'Pensar [Hmm...] por [2] segundos'</strong>, los personajes pueden mostrar lo que están pensando. <br><br>
+                    Por ejemplo, imaginen un explorador que encuentra un río y piensa: '¿Debería cruzar o buscar otro camino?'. <br><br>
+                    Este bloque es perfecto para mostrar <strong>emociones</strong> o <strong>dudas</strong>, y hace que los personajes parezcan más reales. <br><br>
+                    ¡Es como si estuvieran vivos y tomando decisiones!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 5 (1.5 minutos):</strong> Proyectar la Diapositiva 13 con el bloque y ejemplos de uso.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¿Sabían que Scratch no fue la primera herramienta de programación visual? <br><br>
+                    Antes existió <strong>Logo</strong>, creado en 1967, donde las personas programaban a una tortuga para dibujar líneas en la pantalla. <br><br>
+                    Ahora, podemos usar el bloque <strong>'Cambiar disfraz a [disfraz1]'</strong> para cambiar la apariencia de los personajes según lo que pasa en la historia. <br><br>
+                    Por ejemplo, un explorador que cruza un río puede cambiar a un disfraz donde aparece mojado. <br><br>
+                    ¡Esto hace que las historias sean mucho más <strong>visuales</strong> y <strong>emocionantes</strong>!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('brain_vitamin')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">💪 Actividad 4: Brain Vitamin ⏰ Tiempo: 5 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Dinámica interactiva para explorar bloques de apariencia en Scratch.</span>
+        </div>
+    </div>
+    <div id="brain_vitamin" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar la Diapositiva 19 explicando la actividad y mostrando cómo se relaciona con los <strong>bloques de apariencia</strong>.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! 🎉 Antes de continuar con nuestra misión, vamos a recargar energías con una actividad divertida. 🌳<br><br>
+                    Imaginen que son los personajes de sus historias temáticas. Vamos a actuar como ellos, usando movimientos inspirados en los <strong>bloques de apariencia</strong>, como <strong>cambiar disfraz</strong>, <strong>mostrar</strong> u <strong>ocultar</strong>. <br><br>
+                    ¡Prepárense para moverse y ser creativos!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (2 minutos):</strong> Proyectar la Diapositiva 20 con ejemplos visuales de los <strong>bloques de apariencia</strong> y movimientos asociados.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Listos para la acción! 🌟 Primero, imaginen que acaban de aparecer en el bosque. Hagan un gran salto como si usaran el bloque <strong>'Mostrar'</strong>. <br><br>
+                    Ahora, imaginen que cruzan un río y cambian su disfraz actuando como si estuvieran mojados. <br><br>
+                    Por último, desaparezcan como si usaran <strong>'Ocultar'</strong>, escondiéndose detrás de algo. <br><br>
+                    ¡Muéstrenme sus mejores movimientos de genios!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (2 minutos):</strong> Proyectar la Diapositiva 21 motivadora que invite a los estudiantes a usar su imaginación.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Ahora, Genios, ¡es su turno! 🌟<br><br>
+                    Piensen en una pequeña historia y actúen como sus personajes. Usen movimientos para mostrar cómo aparecerían, cambiarían su disfraz o desaparecerían. <br><br>
+                    ¡Sorpréndanme con sus ideas increíbles!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('team_gnius')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 2.5 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Colaboración en equipo para trabajar en narrativas creativas en Scratch.</span>
+        </div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar la Diapositiva 22 que explique la formación de equipos y roles asignados.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios, es hora de trabajar juntos como un verdadero equipo! En esta actividad, formaremos grupos de dos. <br><br>
+                    Uno de ustedes será el <strong>Diseñador</strong>, que creará la historia, y el otro será el <strong>Validador</strong>, que se asegurará de que funcione perfectamente. <br><br>
+                    ¡Ambos son súper importantes!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (0.5 minutos):</strong> Proyectar la Diapositiva 23 con un temporizador para organizarse y elegir roles.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Tienen 30 segundos para encontrar a su compañero y decidir quién será el <strong>Diseñador</strong> y quién será el <strong>Validador</strong>. <br><br>
+                    ¡Recuerden, la clave para el éxito está en el trabajo en equipo!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (0.5 minutos):</strong> Proyectar la Diapositiva 24 mostrando las <strong>Magic Tablets</strong> como herramienta principal.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "En este desafío, el <strong>Diseñador</strong> usará su <strong>Magic Tablet</strong> para crear una historia increíble con Scratch, mientras el <strong>Validador</strong> revisará cada detalle para asegurarse de que funcione perfecto. <br><br>
+                    ¡Así es como los genios trabajan en equipo!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 4 (0.5 minutos):</strong> Proyectar la Diapositiva 25 con un mensaje de preparación para los dispositivos.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Asegúrense de que sus <strong>Magic Tablets</strong> están encendidas y listas para comenzar. <br><br>
+                    Tienen 30 segundos para verificar que todo funcione bien. <br><br>
+                    ¡Listos para crear!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 5 (0.5 minutos):</strong> Sin diapositiva: Animar a los equipos con palabras motivadoras.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Recuerden, Genios, que la clave para lograr algo increíble es la <strong>comunicación</strong>! <br><br>
+                    <strong>Diseñadores</strong>, sean claros y creativos en sus historias. <br><br>
+                    <strong>Validadores</strong>, no olviden dar retroalimentación constructiva. <br><br>
+                    ¡El éxito está en sus manos!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('challenge')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🚀 Actividad 6: Challenge ⏰ Tiempo: 20 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Desafío creativo en Scratch con tres niveles de dificultad.</span>
+        </div>
+    </div>
+    <div id="challenge" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (1 minuto):</strong> Proyectar la Diapositiva 26 con los niveles de desafío y un ejemplo visual de cada uno.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios, llegó el momento del <strong>Challenge</strong>! 🚀 Hoy vamos a usar nuestras <strong>Magic Tablets</strong> para crear historias increíbles con Scratch. <br><br>
+                    Hay tres niveles: <strong>Rookie</strong>, <strong>Master</strong>, y <strong>Hacker</strong>. <br><br>
+                    ¡Elijan su nivel y prepárense para dejar volar su imaginación!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (3 minutos):</strong> Proyectar la Diapositiva 27 con la descripción completa de los niveles y sus objetivos.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "<strong>¡Aquí están los detalles de los niveles!</strong> 🎭<br><br>
+
+                    <strong>Nivel Rookie:</strong> <strong>Un Encuentro Especial</strong><br>
+                    🌟 Rookie: Aquí empezamos con una misión sencilla pero mágica. Van a elegir un lugar natural, como un bosque, una playa o incluso una selva. Su historia tiene que incluir un encuentro especial.<br><br>
+
+                    Por ejemplo, imaginen un explorador que encuentra un animal mágico o una planta especial que le cambia el día. Este es el paso a paso para su misión:<br>
+                    - El personaje inicia en un punto del lugar.<br>
+                    - Se mueve por el escenario y encuentra algo único, como un animal o una flor.<br>
+                    - Cuando lo encuentra, debe pasar algo interesante: reproducir un sonido o cambiar su apariencia.<br>
+                    - ¡Usen un bloque de evento como 'al presionar bandera verde' para iniciar!<br><br>
+
+                    <span style="color: red; font-weight: bold;">Condiciones:</span> Su animación debe tener un inicio, desarrollo y final. ¡No olviden usar al menos un sonido y un cambio de apariencia o movimiento!<br>
+                    <span style="color: red; font-weight: bold;">Consejo:</span> Piensen en una razón divertida para que el personaje explore. Quizás está buscando algo perdido o simplemente quiere conocer el lugar. ¡Dejen que su creatividad los guíe!<br><br>
+
+                    <strong>Nivel Master:</strong> <strong>Una Aventura Interactiva</strong><br>
+                    🎭 Master: Aquí subimos un nivel. Este desafío es para Genios que quieren darle un poco más de profundidad a su historia. Además de explorar, su personaje tendrá interacciones con al menos dos elementos del escenario.<br><br>
+
+                    Por ejemplo, un explorador que llega a una playa 🏖️ y encuentra una tortuga que le da pistas para encontrar un tesoro. Aquí están las instrucciones:<br>
+                    - Mantengan el lugar que eligieron o cámbienlo.<br>
+                    - Diseñen su historia con tres partes claras:<br>
+                      - Inicio: Presenten al personaje y expliquen por qué está explorando.<br>
+                      - Desarrollo: El personaje interactúa con dos elementos (animales, ríos, plantas, etc.).<br>
+                      - Desenlace: Terminen con un descubrimiento especial o una acción memorable.<br>
+                    - Usen sonidos, movimientos y cambios de apariencia para que su historia cobre vida.<br>
+                    - Sincronicen las acciones con bloques como 'al tocar', 'al presionar tecla' o 'al recibir mensaje'.<br><br>
+
+                    <span style="color: red; font-weight: bold;">Condiciones:</span> Su animación debe durar al menos 15 segundos. Cada interacción debe incluir un sonido o un cambio de apariencia. Usen al menos dos bloques de eventos diferentes.<br>
+                    <span style="color: red; font-weight: bold;">Consejo:</span> Piensen en un conflicto o desafío emocionante. ¿Quizás un río que deben cruzar o un animal que necesita ayuda? ¡Hagan que sus historias sean inolvidables!<br><br>
+
+                    <strong>Nivel Hacker:</strong> <strong>La Gran Historia de Exploración</strong><br>
+                    🚀 Hacker: ¿Listos para la gran aventura? Este nivel es para los valientes. Aquí diseñarán una historia compleja y emocionante, llena de interacciones y sorpresas.<br><br>
+
+                    Por ejemplo, un explorador que viaja por una selva, resuelve acertijos, y finalmente encuentra un mensaje secreto en un templo. Aquí tienen el paso a paso:<br>
+                    - Diseñen una historia con una estructura narrativa sólida:<br>
+                      - Inicio: Presenten al personaje y su objetivo (como encontrar algo o ayudar a alguien).<br>
+                      - Desarrollo: Incluyan al menos tres interacciones dinámicas que avancen la historia.<br>
+                      - Desenlace: Terminen con un final creativo o inesperado, como encontrar un tesoro o resolver un misterio.<br>
+                    - Usen sonidos, movimientos, cambios de apariencia, y bloques de eventos para dar vida a cada escena.<br>
+                    - Sincronicen las acciones con al menos tres eventos diferentes.<br><br>
+
+                    <span style="color: red; font-weight: bold;">Condiciones:</span> La animación debe durar al menos 20 segundos. Incluyan al menos tres sonidos y tres cambios de apariencia. Todo debe fluir de manera lógica y conectada.<br>
+                    <span style="color: red; font-weight: bold;">Consejo:</span> Agreguen un mensaje final o moraleja. ¡Eso le dará un toque especial a su historia y les permitirá mostrar lo genios que son!<br><br>
+
+                    ¡Vamos a explorar cada uno juntos!"
+                </td>
+            </tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (1.5 minutos):</strong> Proyectar la Diapositiva 28 mostrando un esquema narrativo para organizar las ideas.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Antes de empezar, organicen su historia usando este esquema: 📜<br><br>
+                    <strong>Inicio:</strong> ¿Quién es el personaje?<br>
+                    <strong>Desarrollo:</strong> ¿Qué pasará?<br>
+                    <strong>Desenlace:</strong> ¿Cómo termina?<br><br>
+                    Y si pueden, escriban sus ideas usando <strong>Paper Programming</strong> para planificar antes de programar."
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 4 (10 minutos):</strong> Proyectar la Diapositiva 29 con un temporizador de 10 minutos.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Manos a la obra! Diseñadores, dejen fluir su creatividad y programen su historia. <br><br>
+                    Validadores, asegúrense de que todo funcione perfecto. <br><br>
+                    ¡Tienen 10 minutos para crear algo asombroso!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 5 (2 minutos):</strong> Proyectar la Diapositiva 30 explicando cómo funciona el método de revisión.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Ahora vamos a revisar nuestras historias con el método del <strong>Patito de Goma</strong> 🦆.<br><br>
+                    Diseñadores, expliquen cada paso de su historia al Validador. <br><br>
+                    Si algo no tiene sentido, hagan ajustes juntos. <br><br>
+                    ¡Esto hará que sus historias sean aún mejores!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 6 (3 minutos):</strong> Proyectar la Diapositiva 31 motivando el intercambio de roles.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Intercambio de roles, Genios! <br><br>
+                    Ahora el <strong>Diseñador</strong> será el <strong>Validador</strong> y viceversa. <br><br>
+                    Esto les permitirá aprender desde otro ángulo y mejorar sus habilidades como equipo. <br><br>
+                    ¡Vamos por más creatividad!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 7 (0.5 minutos):</strong> Proyectar la Diapositiva 32 con un resumen de los logros alcanzados.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Increíble trabajo, Genios! 🎉 <br><br>
+                    Hoy lograron crear historias temáticas, usar bloques de Scratch y trabajar en equipo. <br><br>
+                    ¡Prepárense porque llevaremos estas ideas al siguiente nivel en las próximas clases!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('easter_egg')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 3 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Actividad sorpresa para descubrir un dato curioso sobre programación visual.</span>
+        </div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar la Diapositiva 33 con un diseño divertido y la introducción al reto sorpresa.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios, llegó el momento del <strong>Easter Egg</strong>! 🎉 Es una sorpresa especial para quienes han estado atentos y curiosos. <br><br>
+                    Hoy hablaremos sobre algo que inspiró a Scratch y transformó el mundo de la programación. <br><br>
+                    ¿Listos para descubrirlo?"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (0.5 minutos):</strong> Proyectar la Diapositiva 34 con la pregunta del <strong>Easter Egg</strong>.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Aquí va el reto sorpresa: <br><br>
+                    ¿Cómo se llamaba la primera herramienta de programación visual que inspiró a Scratch? 🐢<br><br>
+                    Les doy una pista: ¡tiene algo que ver con una tortuga! <br><br>
+                    Piensen bien antes de responder. ¡Es un dato fascinante!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (1 minuto):</strong> Sin diapositiva: Elegir a algunos estudiantes para que compartan sus respuestas en voz baja.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Voy a elegir a algunos de ustedes para escuchar sus respuestas. <br><br>
+                    Díganlas en voz baja para mantener el suspenso. <br><br>
+                    ¿Listos? A ver quién puede acercarse más al dato correcto."
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 4 (1 minuto):</strong> Proyectar la Diapositiva 35 con la respuesta correcta y un reconocimiento a los ganadores.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Y la respuesta correcta es… <strong>Logo</strong>! 🚀 <br><br>
+                    Fue creada en 1967 y permitía programar una tortuga para dibujar en la pantalla. <br><br>
+                    ¿Sabían que muchas ideas de Scratch vienen de esta herramienta? <br><br>
+                    ¡Felicidades a los que acertaron, han ganado <strong>Mon-e extra</strong>!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('honor_lab')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🏅 Actividad 8: Honor the Lab ⏰ Tiempo: 3.5 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Reflexión final sobre los logros y organización del espacio de trabajo.</span>
+        </div>
+    </div>
+    <div id="honor_lab" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo del Maestro</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Sin diapositiva: Reflexionar con los estudiantes sobre los logros alcanzados en la clase.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios, qué gran clase hemos tenido hoy! Trabajaron increíblemente bien en equipo y sus historias fueron realmente creativas. <br><br>
+                    Es un honor aprender y crear con un grupo tan talentoso como ustedes. <br><br>
+                    ¡Gracias por su esfuerzo y dedicación!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (3 minutos):</strong> Proyectar la Diapositiva 36 motivando a los estudiantes a dejar el espacio limpio y organizado.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Antes de irnos, recordemos que este es nuestro <strong>Dojo de aprendizaje</strong>. 🧹<br><br>
+                    Vamos a recoger todo lo que usamos y asegurarnos de que quede tan limpio y ordenado como lo encontramos. <br><br>
+                    ¡Gracias por cuidar nuestro espacio!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+    </div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales -->
+    <script>
+        // Aquí puedes agregar scripts adicionales si es necesario
+    </script>
+</body>
+</html>
+
